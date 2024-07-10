@@ -19,3 +19,16 @@ if "http" in url:
         </script>
     """,
     height=0)
+
+components.html(
+f"""
+    <div>some hidden container</div>
+    <p>{st.session_state.counterText}</p>
+    <script>
+        var input = window.parent.document.querySelectorAll("[type=text]");
+        for (var i = 0; i < input.length; ++i) {{
+            input[i].focus();
+        }}
+    </script>
+""",
+height=0)
