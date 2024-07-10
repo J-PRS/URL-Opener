@@ -12,11 +12,11 @@ if "http" in url:
         unsafe_allow_html=True
     )
 
-    components.html(
-    f"""
-        <div>some hidden container</div>
-        <script>
-            window.parent.document.querySelector("a[href]").click();
-        </script>
-    """,
-    height=0)
+    # components.html(
+    # f"""
+    #     <div>some hidden container</div>
+    #     <script>
+    #         window.parent.document.querySelector("a[href]").click();
+    #     </script>
+    # """,
+    # height=0)
