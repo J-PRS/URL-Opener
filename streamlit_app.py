@@ -7,5 +7,5 @@ def format_line_with_style(text, top_margin = "inherit", bottom_margin = "inheri
     st.markdown(line, unsafe_allow_html=True)
 
 url = st.text_input("URL", label_visibility="collapsed")
-format_line_with_style(f"[APP]({url})")
+st.markdown(f"[APP]({url})")
 webbrowser.open(url)
