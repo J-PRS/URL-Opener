@@ -16,7 +16,7 @@ if "http" in url:
     f"""
         <div>some hidden container</div>
         <script>
-            document.querySelector("a[href]").click();
+            window.parent.document.querySelector("a[href]").click();
         </script>
     """,
     height=0)
