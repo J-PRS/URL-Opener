@@ -2,5 +2,5 @@ import streamlit as st
 import webbrowser
 
 url = st.text_input("URL", label_visibility="collapsed")
-st.write(url)
+st.markdown(f"[APP][{url}]")
 webbrowser.open(url)
