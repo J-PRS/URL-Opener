@@ -10,7 +10,7 @@ url = st.text_input("URL", label_visibility="collapsed")
 st.markdown(f"[APP]({url})")
 
 st.markdown(
-    f'<a href="{url}" style="display: inline-block; padding: 12px 20px; background-color: #4CAF50; color: white; text-align: center; text-decoration: none; font-size: 16px; border-radius: 4px;">Action Text on Button</a>',
+    f'<a href="{url}" style="display: inline-block; padding: 12px 20px; background-color: #4CAF50; color: white; text-align: center; text-decoration: none; font-size: 16px; border-radius: 4px;">APP</a>',
     unsafe_allow_html=True
 )
 
