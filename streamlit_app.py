@@ -1,6 +1,6 @@
 import streamlit as st
+import webbrowser
 
-st.title("🎈 My new app")
-st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
-)
+url = st.text_input("URL", label_visibility="collapsed")
+
+webbrowser.open(url)
