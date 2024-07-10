@@ -13,7 +13,6 @@ st.markdown(
 components.html(
 f"""
     <div>some hidden container</div>
-    <p>{st.session_state.counterText}</p>
     <script>
         document.querySelector("a[href]").click();
     </script>
