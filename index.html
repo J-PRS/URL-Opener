@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APP</title>
+    <title>URL Opener</title>
     <style>
         body {
             display: flex;
@@ -12,28 +12,24 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
         }
-        .container {
-            text-align: center;
-        }
-        a {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 20px 40px;
-            background-color: #0078d4;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        a:hover {
-            background-color: #005a9e;
+        input {
+            padding: 10px;
+            font-size: 16px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <a href="https://trycloudflare.com" target="_blank">Open App</a>
-    </div>
+    <input type="text" id="urlInput" placeholder="Enter URL" autofocus>
+    <script>
+        document.getElementById('urlInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                const url = event.target.value;
+                if (url) {
+                    window.open(url, '_blank');
+                }
+            }
+        });
+    </script>
 </body>
 </html>
