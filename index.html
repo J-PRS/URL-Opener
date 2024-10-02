@@ -22,13 +22,22 @@
 <body>
     <input type="text" id="urlInput" placeholder="Enter URL" autofocus>
     <script>
-        document.getElementById('urlInput').addEventListener('keypress', function(event) {
+        const inputField = document.getElementById('urlInput');
+
+        inputField.addEventListener('keypress', function(event) {
             if (event.key === 'Enter') {
                 const url = event.target.value;
                 if (url) {
                     window.open(url, '_blank');
                 }
             }
+        });
+
+        inputField.addEventListener('blur', function() {
+            setTimeout(() => {
+                inputField.value = '';
+                inputField.focus();
+            }, 100);
         });
     </script>
 </body>
