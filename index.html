@@ -6,7 +6,7 @@
     <meta name="google-site-verification" content="Q_F7vizlAp5kzXDt7PjTz0oJzr9HjVJ1NutME6j3bsw" />
     <meta name="description" content="A simple URL opener tool to quickly open URLs in a new tab when the address bar is not accessible.">
     <meta name="robots" content="index, follow">
-    <title>URL Opener</title>
+    <title>URL Opener Instant</title>
     <style>
         body {
             display: flex;
@@ -20,9 +20,13 @@
             padding: 10px;
             font-size: 16px;
         }
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
+    <h1 class="hidden">URL Opener Instant</h1>
     <input type="text" id="urlInput" placeholder="Enter URL" autofocus>
     <script>
         const inputField = document.getElementById('urlInput');
