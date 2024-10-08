@@ -30,6 +30,8 @@
     <input type="text" id="urlInput" placeholder="Enter URL" autofocus>
     <script>
         const inputField = document.getElementById('urlInput');
+        
+        let previousURL = "";
 
         inputField.addEventListener('keypress', function(event) {
             if (event.key === 'Enter') {
@@ -37,11 +39,21 @@
                 if (url) {
                     window.open(url, '_blank');
                 }
+                else
+                {
+                    if (previousURL != "")
+                    {
+                        inputField.value = previousURL;
+                    }
+                }
             }
         });
 
         inputField.addEventListener('blur', function() {
             setTimeout(() => {
+                if (inputField.value != '')
+                    previousURL = inputField.value;
+                
                 inputField.value = '';
                 inputField.focus();
             }, 100);
