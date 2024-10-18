@@ -36,6 +36,16 @@
         inputField.addEventListener('keypress', function(event) {
             if (event.key === 'Enter') {
                 const url = event.target.value;
+
+                const cloudflareDomain = 'trycloudflare.com';
+                const domainIndex = url.indexOf(cloudflareDomain);
+                
+                if (domainIndex !== -1) {
+                    const index = domainIndex + cloudflareDomain.length;
+                    url = url.substring(0, index);
+                    inputField.value = url;
+                }
+
                 if (url) {
                     window.open(url, '_blank');
                 }
