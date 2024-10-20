@@ -53,14 +53,15 @@
                 let url = event.target.value; // Changed from const to let
 
                 url = findLastHttpComUrl(url);
+                inputField.value = url;
                 
-                const cloudflareDomain = 'trycloudflare.com';
-                const domainIndex = url.indexOf(cloudflareDomain);
-                if (domainIndex !== -1) {
-                    const index = domainIndex + cloudflareDomain.length;
-                    url = url.substring(0, index);
-                    inputField.value = url;
-                }
+                // const cloudflareDomain = 'trycloudflare.com';
+                // const domainIndex = url.indexOf(cloudflareDomain);
+                // if (domainIndex !== -1) {
+                //     const index = domainIndex + cloudflareDomain.length;
+                //     url = url.substring(0, index);
+                //     inputField.value = url;
+                // }
 
                 if (url) {
                     window.open(url, '_blank');
