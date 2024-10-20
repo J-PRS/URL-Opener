@@ -34,7 +34,7 @@
         let previousURL = "";
 
         function findLastHttpComUrl(str) {
-            const regex = /https?:\/\/[^ ]*\.com\/?/g;
+            const regex = /https?:\/\/(?:(?!https?:\/\/|\.com)[^\s])*\.com\/?/g;
             let match;
             let lastMatch;
 
