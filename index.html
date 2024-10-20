@@ -23,11 +23,20 @@
         .hidden {
             display: none;
         }
+        .year {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.5);
+        }
     </style>
 </head>
 <body>
     <h1 class="hidden">URL Opener Instant</h1>
     <input type="text" id="urlInput" placeholder="Enter URL" autofocus>
+    <div class="year">&copy; <span id="currentYear"></span></div>
     <script>
         const inputField = document.getElementById('urlInput');
         
@@ -82,6 +91,8 @@
                 inputField.focus();
             }, 100);
         });
+
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
