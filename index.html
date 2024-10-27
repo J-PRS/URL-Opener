@@ -31,10 +31,38 @@
             font-size: 14px;
             color: rgba(0, 0, 0, 0.5);
         }
+        #qr-button {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 16px;
+            padding: 10px 20px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            background-color: #f7f7f7;
+            color: #333;
+            cursor: pointer;
+        }
+        #qr-code {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+        @media (max-height: 560px) {
+            #qr-code {
+                top: 20px;
+                transform: translateX(-50%) scale(0.5);
+            }
+        }
     </style>
 </head>
 <body>
     <h1 class="hidden">URL Opener Instant</h1>
+    <button id="qr-button">QR</button>
+    <div id="qr-code"></div>
     <input type="text" id="urlInput" placeholder="Enter URL" autofocus>
     <div class="year">&copy; <span id="currentYear"></span></div>
     <script>
@@ -60,15 +88,7 @@
 
                 url = findLastHttpComUrl(url);
                 inputField.value = url;
-                
-                // const cloudflareDomain = 'trycloudflare.com';
-                // const domainIndex = url.indexOf(cloudflareDomain);
-                // if (domainIndex !== -1) {
-                //     const index = domainIndex + cloudflareDomain.length;
-                //     url = url.substring(0, index);
-                //     inputField.value = url;
-                // }
-
+            
                 if (url) {
                     window.open(url, '_blank');
                 }
@@ -82,14 +102,34 @@
             }
         });
 
+        inputField.addEventListener('click', function() {
+                inputField.value = '';
+                qrCodeDiv.innerHTML = '';
+        });
+
         inputField.addEventListener('blur', function() {
             setTimeout(() => {
                 if (inputField.value != '')
                     previousURL = inputField.value;
                 
-                inputField.value = '';
                 inputField.focus();
             }, 100);
+        });
+
+        const qrButton = document.getElementById('qr-button');
+        const qrCodeDiv = document.getElementById('qr-code');
+
+        qrButton.addEventListener('click', function() {
+            const url = inputField.value;
+            if (url) {
+                const apiEndpoint = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(url)}&margin=10`;
+                const qrCodeImg = document.createElement('img');
+                qrCodeImg.src = apiEndpoint;
+                qrCodeImg.style.width = '200px';
+                qrCodeImg.style.height = '200px';
+                qrCodeDiv.innerHTML = '';
+                qrCodeDiv.appendChild(qrCodeImg);
+            }
         });
 
         document.getElementById('currentYear').textContent = new Date().getFullYear();
