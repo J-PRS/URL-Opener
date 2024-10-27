@@ -45,8 +45,9 @@
             cursor: pointer;
         }
         #qr-code {
+            display: none;
             position: absolute;
-            top: 60px;
+            top: 10px;
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
@@ -57,11 +58,49 @@
                 transform: translateX(-50%) scale(0.5);
             }
         }
+        #qr-button {
+            display: block;
+            padding: 0;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            width: fit-content;
+            height: fit-content;
+        }
+
+        .qr-square {
+            width: 40px;
+            height: 40px;
+            background-color: #000;
+            position: relative;
+            transform: scale(1); /* Scale the element 4 times larger */
+            opacity: 0.25;
+        }
+
+        .qr-square::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 30px;
+            height: 30px;
+            background-color: #fff;
+        }
+
+        .qr-square::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 20px;
+            height: 20px;
+            background-color: #000;
+        }
     </style>
 </head>
 <body>
     <h1 class="hidden">URL Opener Instant</h1>
-    <button id="qr-button">QR</button>
+    <button id="qr-button"><div class="qr-square"></div></button>
     <div id="qr-code"></div>
     <input type="text" id="urlInput" placeholder="Enter URL" autofocus>
     <div class="year">&copy; <span id="currentYear"></span></div>
@@ -105,6 +144,7 @@
         inputField.addEventListener('click', function() {
                 inputField.value = '';
                 qrCodeDiv.innerHTML = '';
+                qrButton.style.display = 'block'; // Show the QR button
         });
 
         inputField.addEventListener('blur', function() {
@@ -129,6 +169,8 @@
                 qrCodeImg.style.height = '200px';
                 qrCodeDiv.innerHTML = '';
                 qrCodeDiv.appendChild(qrCodeImg);
+                qrButton.style.display = 'none'; // Hide the QR button
+                qrCodeDiv.style.display = 'block';
             }
         });
 
