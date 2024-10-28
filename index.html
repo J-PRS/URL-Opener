@@ -145,7 +145,7 @@
         inputField.addEventListener('click', function() {
                 inputField.value = '';
                 qrCodeDiv.innerHTML = '';
-                qrButton.style.display = 'block'; // Show the QR button
+                qrButton.style.display = 'block';
         });
 
         inputField.addEventListener('blur', function() {
@@ -167,7 +167,7 @@
                 qrCodeImg.style.height = '200px';
                 qrCodeDiv.innerHTML = '';
                 qrCodeDiv.appendChild(qrCodeImg);
-                qrButton.style.display = 'none'; // Hide the QR button
+                qrButton.style.display = 'none';
                 qrCodeDiv.style.display = 'block';
             }
         });
