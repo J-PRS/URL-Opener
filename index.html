@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="08ra6EeAvl0dKIsaAXzW0VEOLEg4vYM9MTZcZ7R-g-w" />
+    <meta name="google-site-verification" content="Q_F7vizlAp5kzXDt7PjTz0oJzr9HjVJ1NutME6j3bsw" />
     <meta name="description" content="A simple URL opener tool to quickly open URLs in a new tab when the address bar is not accessible.">
     <meta name="robots" content="index, follow">
     <title>URL Opener Instant</title>
@@ -54,8 +54,11 @@
         }
         @media (max-height: 560px) {
             #qr-code {
-                top: 20px;
+                position: absolute;
+                top: 10; /* Start from the top */
+                left: 50%;
                 transform: translateX(-50%) scale(0.5);
+                transform-origin: top center; /* Ensure scaling happens from the top */
             }
         }
         #qr-button {
@@ -67,7 +70,6 @@
             width: fit-content;
             height: fit-content;
         }
-
         .qr-square {
             width: 40px;
             height: 40px;
@@ -76,7 +78,6 @@
             transform: scale(1); /* Scale the element 4 times larger */
             opacity: 0.25;
         }
-
         .qr-square::before {
             content: '';
             position: absolute;
@@ -86,7 +87,6 @@
             height: 30px;
             background-color: #fff;
         }
-
         .qr-square::after {
             content: '';
             position: absolute;
@@ -106,7 +106,8 @@
     <div class="year">&copy; <span id="currentYear"></span></div>
     <script>
         const inputField = document.getElementById('urlInput');
-        
+        const qrButton = document.getElementById('qr-button');
+        const qrCodeDiv = document.getElementById('qr-code');
         let previousURL = "";
 
         function findLastHttpComUrl(str) {
@@ -155,9 +156,6 @@
                 inputField.focus();
             }, 100);
         });
-
-        const qrButton = document.getElementById('qr-button');
-        const qrCodeDiv = document.getElementById('qr-code');
 
         qrButton.addEventListener('click', function() {
             const url = inputField.value;
