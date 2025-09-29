@@ -109,36 +109,6 @@
         const qrButton = document.getElementById('qr-button');
         const qrCodeDiv = document.getElementById('qr-code');
         let previousURL = "";
-        const autoOpenTargetUrl = 'http://172.18.0.140:8501';
-        const autoOpenTimeoutMs = 3000;
-        let autoOpenAttempted = false;
-
-        function checkAndOpenTargetUrl() {
-            if (autoOpenAttempted || !autoOpenTargetUrl) {
-                return;
-            }
-
-            autoOpenAttempted = true;
-
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), autoOpenTimeoutMs);
-
-            fetch(autoOpenTargetUrl, {
-                method: 'GET',
-                mode: 'no-cors',
-                cache: 'no-store',
-                signal: controller.signal
-            })
-            .then(() => {
-                clearTimeout(timeoutId);
-                previousURL = autoOpenTargetUrl;
-                inputField.value = autoOpenTargetUrl;
-                window.open(autoOpenTargetUrl, '_blank');
-            })
-            .catch(() => {
-                clearTimeout(timeoutId);
-            });
-        }
 
         function findLastHttpComUrl(str) {
             const regex = /https?:\/\/(?:(?!https?:\/\/|\.com)[^\s])*\.com\/?/g;
@@ -186,8 +156,6 @@
                 inputField.focus();
             }, 100);
         });
-
-        window.addEventListener('load', checkAndOpenTargetUrl);
 
         qrButton.addEventListener('click', function() {
             const url = inputField.value;
